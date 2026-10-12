@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2050" height="1160" viewBox="0 0 2050 1160">
+<title>Final Framework — Task Manager Agent</title>
+<desc>Natural-language Live routing, Agent planning, Runtime workers, scoped evidence assembly and Browser render confirmation.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#304c78"/></marker>
+<style>text{font-family:Arial,sans-serif;fill:#183052}.title{font-size:32px;font-weight:700}.subtitle{font-size:19px}.box-title{font-size:21px;font-weight:700}.note{font-size:16px}.edge{fill:none;stroke:#304c78;stroke-width:2.4;marker-end:url(#arrow)}.feedback{fill:none;stroke:#198169;stroke-width:2.4;stroke-dasharray:9 6;marker-end:url(#arrow)}</style></defs>
+<rect width="2050" height="1160" fill="#f7faff"/>
+<text x="70" y="62" class="title">Final Framework — Task Manager Agent</text>
+<text x="70" y="100" class="subtitle">Live chuyển yêu cầu · Agent thiết kế Draft · Runtime điều phối · Assembly dùng evidence đúng slot</text>
+
+<rect x="70" y="160" width="350" height="250" rx="18" fill="#eef3ff" stroke="#8aa0c5" stroke-width="2"/>
+<text x="92" y="202" class="box-title">Gemini Live</text>
+<text x="92" y="242" class="note">Hội thoại và tool nhanh</text>
+<text x="92" y="270" class="note">request_task_manager(request)</text>
+<text x="92" y="298" class="note">Backend bổ sung history/context</text>
+<text x="92" y="326" class="note">Tiếp nhận SURFACE_READY</text>
+<rect x="460" y="160" width="350" height="250" rx="18" fill="#eeeaff" stroke="#8aa0c5" stroke-width="2"/>
+<text x="482" y="202" class="box-title">Task Manager Agent</text>
+<text x="482" y="242" class="note">Widget / Template / Worker Catalog</text>
+<text x="482" y="270" class="note">describe_widget / describe_template</text>
+<text x="482" y="298" class="note">Surface Retrieval Plan + tasks</text>
+<text x="482" y="326" class="note">evidence_ref → target_slots</text>
+<rect x="850" y="160" width="350" height="250" rx="18" fill="#e9f8f2" stroke="#8aa0c5" stroke-width="2"/>
+<text x="872" y="202" class="box-title">Task Manager Runtime</text>
+<text x="872" y="242" class="note">Compile Draft → render revision 1</text>
+<text x="872" y="270" class="note">Ghi surface_draft Artifact</text>
+<text x="872" y="298" class="note">Chạy worker, retry, cancel, fallback</text>
+<text x="872" y="326" class="note">Barrier: worker/fallback terminal</text>
+<rect x="1240" y="160" width="350" height="250" rx="18" fill="#fff0f7" stroke="#8aa0c5" stroke-width="2"/>
+<text x="1262" y="202" class="box-title">Complete Surface</text>
+<text x="1262" y="242" class="note">Draft + tasks + evidence_by_ref</text>
+<text x="1262" y="270" class="note">Assembly gọi model theo từng slot</text>
+<text x="1262" y="298" class="note">Giữ tree / grid / props đã có</text>
+<text x="1262" y="326" class="note">Final Compiler → revision 2</text>
+<rect x="1630" y="160" width="350" height="250" rx="18" fill="#fff3e6" stroke="#8aa0c5" stroke-width="2"/>
+<text x="1652" y="202" class="box-title">Browser</text>
+<text x="1652" y="242" class="note">Draft và panel_update</text>
+<text x="1652" y="270" class="note">Widget interaction / visual effects</text>
+<text x="1652" y="298" class="note">surface:rendered đúng revision</text>
+<text x="1652" y="326" class="note">Final ASCII map gửi về Live</text>
+<path class="edge" d="M420,280 H460"/>
+<path class="edge" d="M810,280 H850"/>
+<path class="edge" d="M1200,280 H1240"/>
+<path class="edge" d="M1590,280 H1630"/>
+<rect x="70" y="500" width="480" height="230" rx="18" fill="#e9f8f2" stroke="#8aa0c5" stroke-width="2"/>
+<text x="92" y="542" class="box-title">search_information_task</text>
+<text x="92" y="582" class="note">task_type khai báo trực tiếp</text>
+<text x="92" y="610" class="note">Tìm passage / tư liệu chữ</text>
+<text x="92" y="638" class="note">Knowledge Artifact theo evidence_ref</text>
+<text x="92" y="666" class="note">Local retrieval + Google grounding</text>
+<rect x="610" y="500" width="480" height="230" rx="18" fill="#e9f8f2" stroke="#8aa0c5" stroke-width="2"/>
+<text x="632" y="542" class="box-title">search_image_task</text>
+<text x="632" y="582" class="note">task_type khai báo trực tiếp</text>
+<text x="632" y="610" class="note">Tìm media usable</text>
+<text x="632" y="638" class="note">Media Artifact theo evidence_ref</text>
+<text x="632" y="666" class="note">Rỗng hoặc lỗi → draw fallback</text>
+<rect x="1150" y="500" width="400" height="230" rx="18" fill="#fff8df" stroke="#8aa0c5" stroke-width="2"/>
+<text x="1172" y="542" class="box-title">draw_image_task</text>
+<text x="1172" y="582" class="note">Manager-owned fallback</text>
+<text x="1172" y="610" class="note">Giữ evidence_ref của search</text>
+<text x="1172" y="638" class="note">Generated Image Artifact</text>
+<text x="1172" y="666" class="note">Kế thừa target qua plan</text>
+<rect x="1590" y="500" width="390" height="230" rx="18" fill="#f0f8e6" stroke="#8aa0c5" stroke-width="2"/>
+<text x="1612" y="542" class="box-title">Artifact Store</text>
+<text x="1612" y="582" class="note">Version theo run / producer / type</text>
+<text x="1612" y="610" class="note">Ref và provenance nội bộ</text>
+<text x="1612" y="638" class="note">Lấy Artifact mới nhất từng stream</text>
+<text x="1612" y="666" class="note">Usable data giữ nhóm theo #E</text>
+<path class="edge" d="M1025,410 V455 H310 V500"/><path class="edge" d="M1025,455 H850 V500"/>
+<path class="edge" d="M1090,600 H1150"/><path class="edge" d="M1550,600 H1590"/>
+<path class="edge" d="M310,730 V790 H1810 V730"/><path class="edge" d="M850,730 V770 H1780 V730"/>
+<path class="edge" d="M1785,500 V455 H1415 V410"/>
+<text x="490" y="820" class="note">Knowledge / Media / Generated Image Artifacts → dữ liệu usable theo evidence_ref</text>
+<rect x="70" y="865" width="650" height="115" rx="18" fill="#eeeaff" stroke="#8aa0c5" stroke-width="2"/>
+<text x="92" y="907" class="box-title">Catalog và contract</text>
+<text x="92" y="947" class="note">Agent đọc catalog toàn cục; describe trước khi dùng widget.</text>
+<rect x="760" y="865" width="600" height="115" rx="18" fill="#e9f8f2" stroke="#8aa0c5" stroke-width="2"/>
+<text x="782" y="907" class="box-title">Lifecycle và diagnostics</text>
+<text x="782" y="947" class="note">TaskEvent · retry · cancel · pause/resume · supersede</text>
+<rect x="1400" y="865" width="580" height="115" rx="18" fill="#fff0f7" stroke="#8aa0c5" stroke-width="2"/>
+<text x="1422" y="907" class="box-title">Thiếu evidence usable</text>
+<text x="1422" y="947" class="note">Giữ Draft → placeholder hiện có; không bịa dữ liệu.</text>
+<path class="feedback" d="M1980,310 H2020 V1060 H40 V310 H70"/>
+<text x="310" y="1040" class="subtitle">Browser xác nhận final revision → SURFACE_READY + final ASCII map + visual_effects → Gemini Live</text>
+<text x="70" y="1130" class="note">Nguồn contract: TASK_MANAGER_AGENT_MIGRATION_PLAN.md · TaskRecord/Artifact giữ ref; ánh xạ target nằm trong plan.</text></svg>

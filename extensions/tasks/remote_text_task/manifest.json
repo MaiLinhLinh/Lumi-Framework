@@ -1,0 +1,78 @@
+{
+  "id": "remote_text_task",
+  "description": "Lấy một đoạn nội dung xác nhận từ dịch vụ Async bên ngoài.",
+  "knowledge": {
+    "allowed_tools": []
+  },
+  "input": {
+    "payload": {
+      "query": "{{task.instruction}}"
+    },
+    "schema": {
+      "type": "object",
+      "required": [
+        "query"
+      ],
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "executor": {
+    "type": "http_async_agent",
+    "submit": {
+      "url": "https://lumi-multi-agent.onrender.com/tasks",
+      "method": "POST",
+      "job_id_path": "$.job_id"
+    },
+    "status": {
+      "url": "https://lumi-multi-agent.onrender.com/jobs/{{job_id}}",
+      "method": "GET",
+      "state_path": "$.status",
+      "states": {
+        "queued": [
+          "queued"
+        ],
+        "running": [
+          "running"
+        ],
+        "succeeded": [
+          "completed"
+        ],
+        "failed": [
+          "failed"
+        ],
+        "cancelled": [
+          "cancelled"
+        ]
+      },
+      "error_path": "$.error"
+    },
+    "cancel": {
+      "url": "https://lumi-multi-agent.onrender.com/jobs/{{job_id}}/cancel",
+      "method": "POST"
+    },
+    "poll_interval_seconds": 0.2,
+    "timeout_seconds": 15
+  },
+  "output": {
+    "path": "$.payload",
+    "schema": {
+      "type": "object",
+      "required": [
+        "passage"
+      ],
+      "properties": {
+        "passage": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

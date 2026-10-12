@@ -1,0 +1,6 @@
+{
+  "id": "object_group",
+  "contract": "contract.py",
+  "renderer": "renderer.js",
+  "styles": "styles.css"
+}

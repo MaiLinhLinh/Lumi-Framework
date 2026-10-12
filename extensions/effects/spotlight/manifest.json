@@ -1,0 +1,7 @@
+{
+  "id": "spotlight",
+  "handler": "effect.js",
+  "styles": "styles.css",
+  "description": "Làm tối vùng xung quanh để làm nổi bật một anchor đang được nói tới.",
+  "usage_guidance": "Dùng khi cần hướng ánh nhìn vào một vùng cụ thể giữa nhiều nội dung trên panel."
+}

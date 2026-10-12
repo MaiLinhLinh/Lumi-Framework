@@ -1,0 +1,7 @@
+{
+  "id": "pulse",
+  "handler": "effect.js",
+  "styles": "styles.css",
+  "description": "Tạo nhịp nhấn ngắn trên một vùng.",
+  "usage_guidance": "Dùng để thu hút chú ý ngắn gọn tới vùng đang nói."
+}

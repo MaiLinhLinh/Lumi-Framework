@@ -1,0 +1,50 @@
+.lumi-widget-object-group {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(2px, min(1.2cqi, 2cqb), 6px);
+  padding: clamp(3px, min(2cqi, 2.5cqb), 8px);
+  overflow: hidden;
+  border: 2px solid var(--panel-accent);
+  border-radius: var(--panel-radius);
+  background: var(--panel-surface);
+}
+
+.lumi-widget-object-group-label {
+  margin: 0;
+  min-width: 0;
+  max-height: 1.25em;
+  overflow: hidden;
+  text-align: center;
+  color: var(--panel-muted);
+  font-weight: 700;
+  font-size: clamp(.7rem, min(2cqi, 18cqb), 1rem);
+  line-height: 1.15;
+}
+
+.lumi-widget-object-group-items {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  gap: clamp(3px, .6vw, 8px);
+}
+
+.lumi-widget-object-group-items img {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+}
+
+.lumi-widget-object-group-items-composite {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+}

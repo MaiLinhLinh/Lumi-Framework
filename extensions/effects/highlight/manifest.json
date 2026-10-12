@@ -1,0 +1,7 @@
+{
+  "id": "highlight",
+  "handler": "effect.js",
+  "styles": "styles.css",
+  "description": "Làm nổi bật vùng đang nói tới.",
+  "usage_guidance": "Dùng khi cần trẻ chú ý hoặc quan sát một vùng."
+}

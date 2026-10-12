@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="Dấu chia">
+  <path d="M48 128h160" fill="none" stroke="#3b82f6" stroke-linecap="round" stroke-width="28"/>
+  <circle cx="128" cy="66" r="17" fill="#3b82f6"/>
+  <circle cx="128" cy="190" r="17" fill="#3b82f6"/>
+</svg>

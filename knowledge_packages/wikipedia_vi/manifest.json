@@ -1,0 +1,23 @@
+{
+  "package_id": "wikipedia_vi",
+  "display_name": "Wikipedia tiếng Việt",
+  "description": "Kiến thức bách khoa tiếng Việt, nhân vật, sự kiện và địa lý.",
+  "languages": [
+    "vi"
+  ],
+  "content_types": [
+    "text",
+    "image"
+  ],
+  "ingestion_provider": "ingestion_provider.py",
+  "retrieval_provider": "retrieval_provider.py",
+  "schemas": {
+    "text": "schemas/document.schema.json",
+    "media": "schemas/media.schema.json"
+  },
+  "storage": {
+    "documents_collection": "documents",
+    "passages_collection": "passages",
+    "media_collection": "media"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "draw_arrow",
+  "handler": "effect.js",
+  "styles": "styles.css",
+  "description": "Vẽ mũi tên chỉ vào một vùng.",
+  "usage_guidance": "Dùng khi cần hướng ánh nhìn tới một vùng cụ thể."
+}

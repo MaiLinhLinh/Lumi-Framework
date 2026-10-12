@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "document_id",
+    "package_id",
+    "title",
+    "source_uri"
+  ],
+  "properties": {
+    "document_id": {"type": "string"},
+    "package_id": {"const": "wikipedia_vi"},
+    "title": {"type": "string"},
+    "source_uri": {"type": "string", "format": "uri"}
+  },
+  "additionalProperties": true
+}

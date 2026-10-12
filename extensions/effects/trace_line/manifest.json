@@ -1,0 +1,7 @@
+{
+  "id": "trace_line",
+  "handler": "effect.js",
+  "styles": "styles.css",
+  "description": "Lần theo đường hoặc chuỗi trong vùng.",
+  "usage_guidance": "Dùng khi giải thích một đường, tiến trình hoặc đồ thị đã có."
+}

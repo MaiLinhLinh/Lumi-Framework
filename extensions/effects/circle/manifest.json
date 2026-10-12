@@ -1,0 +1,7 @@
+{
+  "id": "circle",
+  "handler": "effect.js",
+  "styles": "styles.css",
+  "description": "Khoanh rõ một vùng đang nói tới.",
+  "usage_guidance": "Dùng khi chỉ chính xác đối tượng, đáp án hoặc kết quả."
+}

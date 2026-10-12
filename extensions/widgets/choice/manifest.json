@@ -1,0 +1,6 @@
+{
+  "id": "choice",
+  "contract": "contract.py",
+  "renderer": "renderer.js",
+  "styles": "styles.css"
+}

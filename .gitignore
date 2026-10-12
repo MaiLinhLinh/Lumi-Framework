@@ -1,0 +1,36 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Root-level planning documents (keep extension/package READMEs tracked)
+/AGENT_TASK_KNOWLEDGE_FRAMEWORK_IMPLEMENTATION_PLAN.md
+/ASYNC_AGENT_TASK_FRAMEWORK_ARCHITECTURE.md
+/FINAL_FRAMEWORK_ARCHITECTURE.md
+/IMPLEMENTATION_PLAN.md
+/LUMI_FRAMEWORK_OVERVIEW.md
+/SEMANTIC_EXPERIENCE_PLAN.md
+/TASK_MANAGER_AGENT_MIGRATION_PLAN.md
+
+# Generated copy inventory
+/CP0_COPY_MANIFEST.json
+
+# Python cache and local tooling output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.venv/
+venv/
+
+# Runtime-generated knowledge indexes and media
+/knowledge_data/chroma/
+/knowledge_data/media/
+
+# Diagnostics and temporary Office files
+*.log
+~$*.docx

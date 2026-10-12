@@ -1,0 +1,6 @@
+{
+  "id": "timeline",
+  "contract": "contract.py",
+  "renderer": "renderer.js",
+  "styles": "styles.css"
+}

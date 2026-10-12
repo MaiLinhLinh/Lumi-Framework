@@ -1,0 +1,6 @@
+{
+  "id": "number_display",
+  "contract": "contract.py",
+  "renderer": "renderer.js",
+  "styles": "styles.css"
+}
