@@ -1,0 +1,6 @@
+{
+  "id": "flashcard",
+  "contract": "contract.py",
+  "renderer": "component.tsx",
+  "styles": "styles.css"
+}

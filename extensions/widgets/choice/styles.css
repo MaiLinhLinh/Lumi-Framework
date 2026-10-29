@@ -1,0 +1,7 @@
+.lumi-widget-choice { display:block; padding:clamp(6px,min(5cqi,5cqb),16px); overflow:hidden; cursor:pointer; border:2px solid #7dd3fc; border-radius:var(--panel-radius); background:linear-gradient(145deg,#fff,#f0f9ff); box-shadow:0 3px 12px rgb(14 165 233 / .12); transition:transform 150ms ease,border-color 150ms ease,box-shadow 150ms ease; }
+.lumi-widget-choice:hover,.lumi-widget-choice:focus-visible { border-color:#0284c7; box-shadow:0 7px 18px rgb(14 165 233 / .24); outline:none; transform:translateY(-2px); }
+.lumi-widget-choice:active { transform:scale(.985); background:#e0f2fe; }
+.lumi-widget-choice-content { width:100%; height:100%; min-width:0; min-height:0; display:grid; grid-template-rows:minmax(0,1fr) auto; gap:clamp(4px,min(3cqi,3cqb),12px); align-items:stretch; }
+.lumi-widget-choice-child { min-width:0; min-height:0; }
+.lumi-widget-choice .lumi-widget-image { border:0; border-radius:calc(var(--panel-radius) - 6px); padding:0; }
+.lumi-widget-choice .lumi-widget-text { height:auto; padding:0; }

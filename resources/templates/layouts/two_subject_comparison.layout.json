@@ -1,0 +1,80 @@
+{
+  "template_id": "two_subject_comparison",
+  "description": "So sánh trực quan hai đối tượng ngang hàng: mỗi bên có ảnh lớn và nhãn ngắn, phù hợp khi trẻ quan sát hai chủ thể.",
+  "blocks": [
+    {
+      "widget_id": "text",
+      "grid": {"col": 1, "row": 1, "col_span": 12, "row_span": 1},
+      "props": {"content": "$block_1_content", "role": "body"}
+    },
+    {
+      "widget_id": "image",
+      "grid": {"col": 1, "row": 3, "col_span": 5, "row_span": 6},
+      "props": {"asset_id": "$block_2_asset_id", "label": "$block_2_label"}
+    },
+    {
+      "widget_id": "image",
+      "grid": {"col": 7, "row": 3, "col_span": 5, "row_span": 6},
+      "props": {"asset_id": "$block_3_asset_id", "label": "$block_3_label"}
+    }
+  ],
+  "bindings": [
+    {
+      "key": "$block_1_content",
+      "block_index": 1,
+      "prop_name": "content",
+      "type": "string",
+      "required": true,
+      "description": "Nội dung văn bản cần hiển thị."
+    },
+    {
+      "key": "$block_2_asset_id",
+      "block_index": 2,
+      "prop_name": "asset_id",
+      "type": "string",
+      "required": true,
+      "description": "ID của asset ảnh sẽ hiển thị.",
+      "source": "asset_catalog.id"
+    },
+    {
+      "key": "$block_2_label",
+      "block_index": 2,
+      "prop_name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Nhãn ngắn cho ảnh."
+    },
+    {
+      "key": "$block_3_asset_id",
+      "block_index": 3,
+      "prop_name": "asset_id",
+      "type": "string",
+      "required": true,
+      "description": "ID của asset ảnh sẽ hiển thị.",
+      "source": "asset_catalog.id"
+    },
+    {
+      "key": "$block_3_label",
+      "block_index": 3,
+      "prop_name": "label",
+      "type": "string",
+      "required": false,
+      "description": "Nhãn ngắn cho ảnh."
+    }
+  ],
+  "semantic_spec": {
+    "mechanics": [],
+    "slots": [
+      "$block_1_content",
+      "$block_2_asset_id",
+      "$block_2_label",
+      "$block_3_asset_id",
+      "$block_3_label"
+    ],
+    "component_contracts": [
+      {"widget_id": "text", "initial_state": {"visibility": "visible"}},
+      {"widget_id": "image", "initial_state": {"visibility": "visible"}},
+      {"widget_id": "image", "initial_state": {"visibility": "visible"}}
+    ]
+  }
+}

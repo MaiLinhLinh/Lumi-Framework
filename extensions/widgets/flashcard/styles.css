@@ -1,0 +1,12 @@
+.lumi-widget-flashcard { position: relative; display: block; cursor: pointer; perspective: 1100px; border: 0; background: transparent; overflow: visible; }
+.lumi-widget-flashcard:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 5px; }
+.lumi-widget-flashcard-inner { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 520ms cubic-bezier(.2, .8, .2, 1); }
+.lumi-widget-flashcard.is-flipped .lumi-widget-flashcard-inner { transform: rotateY(180deg); }
+.lumi-widget-flashcard-face { position: absolute; inset: 0; box-sizing: border-box; min-width: 0; min-height: 0; display: grid; place-items: center; overflow: hidden; border: 2px solid #7dd3fc; border-radius: var(--panel-radius); background: linear-gradient(145deg, #fff, #f0f9ff); box-shadow: 0 6px 18px rgb(14 165 233 / .16); backface-visibility: hidden; }
+.lumi-widget-flashcard-front { grid-template-rows: minmax(0, 1fr) auto; gap: clamp(4px, min(3cqi, 3cqb), 12px); padding: clamp(8px, min(6cqi, 6cqb), 22px); }
+.lumi-widget-flashcard-front img { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: contain; }
+.lumi-widget-flashcard-front p { margin: 0; max-width: 100%; overflow: hidden; text-align: center; font-size: clamp(.9rem, min(5cqi, 18cqb), 1.7rem); font-weight: 750; line-height: 1.15; }
+.lumi-widget-flashcard-back { transform: rotateY(180deg); align-content: center; gap: clamp(4px, min(3cqi, 3cqb), 14px); padding: clamp(8px, min(7cqi, 7cqb), 28px); text-align: center; }
+.lumi-widget-flashcard-back strong { max-width: 100%; overflow-wrap: anywhere; font-size: clamp(1.2rem, min(12cqi, 34cqb), 4rem); line-height: 1; }
+.lumi-widget-flashcard-back span { max-width: 100%; overflow-wrap: anywhere; color: var(--panel-muted); font-size: clamp(.8rem, min(5cqi, 16cqb), 1.5rem); }
+.lumi-widget-flashcard-back p { margin: 0; max-width: 100%; overflow-wrap: anywhere; font-size: clamp(.85rem, min(5cqi, 18cqb), 1.6rem); font-weight: 700; }

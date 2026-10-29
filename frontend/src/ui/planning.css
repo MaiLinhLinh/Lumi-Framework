@@ -1,0 +1,14 @@
+/* Copied from showPlanningSurface() in the original application. */
+.lumi-planning-surface {
+  position: absolute; inset: 0; z-index: 10; display: grid;
+  width: 100%; height: 100%; min-height: 100%; place-items: center; background: #fff;
+}
+.lumi-planning-spinner {
+  width: 42px; height: 42px; border: 4px solid rgba(14, 165, 233, .18);
+  border-top-color: #0ea5e9; border-radius: 50%; animation: lumi-planning-spin .8s linear infinite;
+}
+.lumi-planning-label {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+@keyframes lumi-planning-spin { to { transform: rotate(360deg); } }

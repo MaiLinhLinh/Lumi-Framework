@@ -1,0 +1,2 @@
+.lumi-pulse { animation: lumi-pulse 720ms cubic-bezier(.2, .8, .3, 1) 2; }
+@keyframes lumi-pulse { 0%, 100% { transform: scale(1); filter: none; } 50% { transform: scale(1.035); filter: drop-shadow(0 0 8px rgba(14, 165, 233, .7)); } }

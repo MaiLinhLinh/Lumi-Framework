@@ -1,0 +1,186 @@
+"""Declarative reusable layout-template catalogs.
+
+The catalog describes layouts in natural language for the Task Manager. It never
+decides suitability in Python: the agent chooses an id and the backend only
+checks that the id exists before loading its stored trusted template contract.
+
+Every catalog entry is a reusable layout template. Concrete presentation plans
+exist only transiently after binding materialization.
+"""
+
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Mapping
+
+from lumi_openui.catalogs.layout_templates import LayoutTemplate, LayoutTemplateError
+
+
+class TemplateCatalogError(ValueError):
+    """Raised when a reusable plan catalog or a stored plan is invalid."""
+
+
+def _text(value: object, field_name: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise TemplateCatalogError(f"{field_name} must be a non-empty string.")
+    return value.strip()
+
+
+def _safe_relative_path(value: object, field_name: str) -> Path:
+    path = Path(_text(value, field_name))
+    if path.is_absolute() or ".." in path.parts:
+        raise TemplateCatalogError(f"{field_name} must be a safe relative path.")
+    return path
+
+
+def _json_object(path: Path, field_name: str) -> Mapping[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise TemplateCatalogError(f"cannot load {field_name}: {exc}") from exc
+    if not isinstance(value, Mapping):
+        raise TemplateCatalogError(f"{field_name} root must be an object.")
+    return value
+
+
+@dataclass(frozen=True, slots=True)
+class TemplateCatalogEntry:
+    """One reusable template available to Task Manager discovery."""
+
+    id: str
+    description: str
+    layout_path: Path
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "id", _text(self.id, "template.id"))
+        object.__setattr__(self, "description", _text(self.description, "template.description"))
+        if not isinstance(self.layout_path, Path):
+            raise TemplateCatalogError("template.layout_path must be a Path.")
+
+    def to_catalog_record(self) -> dict[str, str]:
+        return {
+            "id": self.id,
+            "description": self.description,
+            "layout_path": self.layout_path.as_posix(),
+        }
+
+
+@dataclass(frozen=True, slots=True)
+class TemplateCatalog:
+    """Trusted loader for layouts reusable by every experience."""
+
+    resource_root: Path
+    entries: tuple[TemplateCatalogEntry, ...] = ()
+    catalog_path: Path | None = None
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.resource_root, Path):
+            raise TemplateCatalogError("template_catalog.resource_root must be a Path.")
+        object.__setattr__(self, "resource_root", self.resource_root.resolve())
+        if not isinstance(self.entries, tuple) or not all(isinstance(item, TemplateCatalogEntry) for item in self.entries):
+            raise TemplateCatalogError("template_catalog.entries must contain TemplateCatalogEntry values.")
+        ids = [entry.id for entry in self.entries]
+        if len(ids) != len(set(ids)):
+            raise TemplateCatalogError("template catalog contains duplicate ids.")
+        if self.catalog_path is not None and not isinstance(self.catalog_path, Path):
+            raise TemplateCatalogError("template_catalog.catalog_path must be a Path.")
+
+    def contains(self, template_id: str) -> bool:
+        return any(entry.id == template_id for entry in self.entries)
+
+    def entry(self, template_id: str) -> TemplateCatalogEntry:
+        requested_id = _text(template_id, "template_id")
+        entry = next((item for item in self.entries if item.id == requested_id), None)
+        if entry is None:
+            raise TemplateCatalogError(f"unknown template_id: {requested_id}.")
+        return entry
+
+    def load_layout_template(self, template_id: str) -> LayoutTemplate:
+        """Load a reusable layout frame; its bindings are not materialized here."""
+
+        entry = self.entry(template_id)
+        data = _json_object(self._resolve_entry_path(entry.layout_path), f"layout template {entry.id}")
+        try:
+            template = LayoutTemplate.from_dict(data)
+        except LayoutTemplateError as exc:
+            raise TemplateCatalogError(str(exc)) from exc
+        if template.template_id != entry.id:
+            raise TemplateCatalogError("stored layout template id must match the catalog id.")
+        return template
+
+    def delete_layout_template(self, template_id: str) -> "TemplateCatalog":
+        """Delete one stored layout and its catalog record as one operation.
+
+        The associated file is always resolved inside the shared resource root before it is
+        deleted.  This keeps deletion shared and prevents
+        stale catalog entries from surviving after a layout is removed.
+        """
+
+        entry = self.entry(template_id)
+        if self.catalog_path is None:
+            raise TemplateCatalogError("cannot delete a layout template without a catalog path.")
+
+        layout_path = self._resolve_entry_path(entry.layout_path)
+        if layout_path.exists():
+            if not layout_path.is_file():
+                raise TemplateCatalogError("layout template path must point to a file.")
+            layout_path.unlink()
+
+        new_entries = tuple(item for item in self.entries if item.id != entry.id)
+        catalog_data = {
+            "templates": [item.to_catalog_record() for item in new_entries],
+        }
+        self.catalog_path.write_text(
+            json.dumps(catalog_data, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        return TemplateCatalog(
+            resource_root=self.resource_root,
+            entries=new_entries,
+            catalog_path=self.catalog_path,
+        )
+
+    def _resolve_entry_path(self, relative_path: Path) -> Path:
+        path = (self.resource_root / relative_path).resolve()
+        try:
+            path.relative_to(self.resource_root)
+        except ValueError as exc:
+            raise TemplateCatalogError("template path resolves outside the shared resource root.") from exc
+        return path
+
+
+def load_template_catalog(
+    *,
+    catalog_path: Path,
+    resource_root: Path,
+) -> TemplateCatalog:
+    """Load a catalog whose paths are always constrained to the shared resource root."""
+
+    root = resource_root.resolve()
+    resolved_catalog = catalog_path.resolve()
+    try:
+        resolved_catalog.relative_to(root)
+    except ValueError as exc:
+        raise TemplateCatalogError("template catalog resolves outside the shared resource root.") from exc
+    raw = _json_object(resolved_catalog, "template catalog")
+    items = raw.get("templates", [])
+    if not isinstance(items, list):
+        raise TemplateCatalogError("template_catalog.templates must be an array.")
+    entries: list[TemplateCatalogEntry] = []
+    for index, item in enumerate(items):
+        if not isinstance(item, Mapping):
+            raise TemplateCatalogError(f"template_catalog.templates[{index}] must be an object.")
+        entries.append(TemplateCatalogEntry(
+            id=item.get("id"),
+            description=item.get("description"),
+            layout_path=_safe_relative_path(
+                item.get("layout_path"), f"template_catalog.templates[{index}].layout_path"
+            ),
+        ))
+    return TemplateCatalog(
+        resource_root=root,
+        entries=tuple(entries),
+        catalog_path=resolved_catalog,
+    )

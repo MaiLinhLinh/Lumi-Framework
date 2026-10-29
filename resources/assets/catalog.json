@@ -1,0 +1,180 @@
+{
+  "assets": [
+    {
+      "id": "dog",
+      "kind": "image",
+      "path": "assets/dog.jpg",
+      "mime_type": "image/jpeg",
+      "caption": "Minh họa một chú chó",
+      "tags": ["chó", "dog", "động vật", "giáo dục"]
+    },
+    {
+      "id": "cat",
+      "kind": "image",
+      "path": "assets/cat.jpg",
+      "mime_type": "image/jpeg",
+      "caption": "Minh họa một chú mèo",
+      "tags": ["mèo", "cat", "động vật", "giáo dục"]
+    },
+    {
+      "id": "tomato",
+      "kind": "image",
+      "path": "assets/cachua.jpg",
+      "mime_type": "image/jpeg",
+      "caption": "Một quả cà chua đỏ",
+      "tags": ["cà chua", "tomato", "rau quả", "thực phẩm", "giáo dục"]
+    },
+    {
+      "id": "penguin",
+      "kind": "image",
+      "path": "assets/canhcut.jpg",
+      "mime_type": "image/jpeg",
+      "caption": "Một chú chim cánh cụt",
+      "tags": ["cánh cụt", "chim cánh cụt", "penguin", "động vật", "giáo dục"]
+    },
+    {
+      "id": "mango",
+      "kind": "image",
+      "path": "assets/xoai.jpg",
+      "mime_type": "image/jpeg",
+      "caption": "Một quả xoài",
+      "tags": ["xoài", "mango", "trái cây", "hoa quả", "giáo dục"]
+    },
+    {
+      "id": "coconut",
+      "kind": "image",
+      "path": "assets/dua.jpg",
+      "mime_type": "image/jpeg",
+      "caption": "Một quả dừa",
+      "tags": ["dừa", "coconut", "trái cây", "hoa quả", "giáo dục"]
+    },
+    {
+      "id": "panda",
+      "kind": "image",
+      "path": "assets/gautruc.jpg",
+      "mime_type": "image/jpeg",
+      "caption": "Một chú gấu trúc",
+      "tags": ["gấu trúc", "panda", "động vật", "giáo dục"]
+    },
+    {
+      "id": "plus",
+      "kind": "icon",
+      "path": "assets/plus.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Biểu tượng dấu cộng trong toán học.",
+      "tags": ["toán học", "phép cộng", "dấu cộng", "+"]
+    },
+    {
+      "id": "minus",
+      "kind": "icon",
+      "path": "assets/minus.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Biểu tượng dấu trừ trong toán học.",
+      "tags": ["toán học", "phép trừ", "dấu trừ", "-"]
+    },
+    {
+      "id": "equals",
+      "kind": "icon",
+      "path": "assets/equals.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Biểu tượng dấu bằng trong toán học.",
+      "tags": ["toán học", "dấu bằng", "="]
+    },
+    {
+      "id": "multiply",
+      "kind": "icon",
+      "path": "assets/multiply.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Biểu tượng dấu nhân trong toán học.",
+      "tags": ["toán học", "phép nhân", "dấu nhân", "×"]
+    },
+    {
+      "id": "divide",
+      "kind": "icon",
+      "path": "assets/divide.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Biểu tượng dấu chia trong toán học.",
+      "tags": ["toán học", "phép chia", "dấu chia", "÷"]
+    },
+    {
+      "id": "digit_0",
+      "kind": "icon",
+      "path": "assets/digit_0.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 0 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 0", "0"]
+    },
+    {
+      "id": "digit_1",
+      "kind": "icon",
+      "path": "assets/digit_1.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 1 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 1", "1"]
+    },
+    {
+      "id": "digit_2",
+      "kind": "icon",
+      "path": "assets/digit_2.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 2 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 2", "2"]
+    },
+    {
+      "id": "digit_3",
+      "kind": "icon",
+      "path": "assets/digit_3.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 3 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 3", "3"]
+    },
+    {
+      "id": "digit_4",
+      "kind": "icon",
+      "path": "assets/digit_4.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 4 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 4", "4"]
+    },
+    {
+      "id": "digit_5",
+      "kind": "icon",
+      "path": "assets/digit_5.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 5 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 5", "5"]
+    },
+    {
+      "id": "digit_6",
+      "kind": "icon",
+      "path": "assets/digit_6.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 6 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 6", "6"]
+    },
+    {
+      "id": "digit_7",
+      "kind": "icon",
+      "path": "assets/digit_7.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 7 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 7", "7"]
+    },
+    {
+      "id": "digit_8",
+      "kind": "icon",
+      "path": "assets/digit_8.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 8 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 8", "8"]
+    },
+    {
+      "id": "digit_9",
+      "kind": "icon",
+      "path": "assets/digit_9.svg",
+      "mime_type": "image/svg+xml",
+      "caption": "Chữ số 9 trong toán học.",
+      "tags": ["toán học", "chữ số", "số 9", "9"]
+    }
+  ]
+}

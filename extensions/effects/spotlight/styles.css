@@ -1,0 +1,2 @@
+.presentation-overlay .lumi-overlay-spotlight { fill:rgb(15 23 42 / .52); stroke:#facc15; stroke-width:3; filter:drop-shadow(0 0 8px rgb(250 204 21 / .7)); animation:lumi-spotlight-fade-in 240ms ease-out both; }
+@keyframes lumi-spotlight-fade-in { from { opacity:0; } to { opacity:1; } }

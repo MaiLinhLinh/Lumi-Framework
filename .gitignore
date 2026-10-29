@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
+node_modules/
+build/
+knowledge_data/
+frontend/test-results/
+frontend/.npm-cache/
+frontend/playwright-report/
+docs/
+tests/
+
